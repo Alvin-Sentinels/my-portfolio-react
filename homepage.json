@@ -1,0 +1,7 @@
+{
+"homepage": "https://zokomilk.github.io/my-portfolio-react",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+}
