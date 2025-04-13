@@ -1,9 +1,24 @@
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/" # Root folder where package.json is
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
-    allow:
-      - dependency-type: "direct"
+# .github/workflows/dependabot-auto-merge.yml
+name: Auto-merge Dependabot
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Auto-approve PR
+        uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Auto-merge PR
+        uses: pascalgn/automerge-action@v0.15.3
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
