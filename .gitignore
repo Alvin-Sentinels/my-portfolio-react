@@ -1,4 +1,4 @@
-# Compiled class file
+2# Compiled class file
 *.class
 
 # Log file
@@ -23,3 +23,6 @@
 hs_err_pid*
 replay_pid*
 node_modules
+
+% gpg --import KEYS
+        % gpg --verify downloaded_file.asc downloaded_file
